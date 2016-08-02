@@ -5,4 +5,4 @@ This is another line.
 And add again.
 With another extra line.
 Ngrok was down and token changed.
-Added Jenkinsfile.
+Added Jenkinsfile and PR plugin config.
