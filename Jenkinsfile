@@ -1,17 +1,11 @@
 node {
 
-	try {
-
-		setGitHubPullRequestStatus context: 'default', message: 'Build in progress', state: 'INPROGRESS'
-
-	}
-
-	catch (err) {
-
-	setGitHubPullRequestStatus context: 'default', message: 'Build failed', state: 'FAILURE'
-
-	}
-
-	setGitHubPullRequestStatus context: 'default', message: 'Build success', state: 'SUCCESS'
+	step([$class: 'GitHubCommitStatusSetter',
+      contextSource: [$class: 'ManuallyEnteredCommitContextSource',
+                      context: 'Test Context'],
+      statusResultSource: [$class: 'ConditionalStatusResultSource',
+                           results: [[$class: 'AnyBuildResult',
+                                      message: 'test message',
+                                      state: 'SUCCESS']]]])
 
 }
